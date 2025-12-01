@@ -1,0 +1,802 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Contact Us - LifeSaver Blood Donation</title>
+    <style>
+        /* Base Styles */
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+            font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+        }
+
+        :root {
+            --primary-red: #e30613;
+            --dark-red: #b30000;
+            --light-red: #ff4d4d;
+            --white: #ffffff;
+            --light-gray: #f5f5f5;
+            --medium-gray: #e0e0e0;
+            --dark-gray: #333333;
+            --text-color: #444444;
+            --shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
+            --transition: all 0.3s ease;
+        }
+
+        html {
+            scroll-behavior: smooth;
+        }
+
+        body {
+            line-height: 1.6;
+            color: var(--text-color);
+            background-color: var(--white);
+            overflow-x: hidden;
+        }
+
+        .container {
+            width: 90%;
+            max-width: 1200px;
+            margin: 0 auto;
+            padding: 0 15px;
+        }
+
+        /* Typography */
+        h1, h2, h3, h4, h5, h6 {
+            font-weight: 700;
+            line-height: 1.2;
+            margin-bottom: 1rem;
+            color: var(--dark-gray);
+        }
+
+        h1 {
+            font-size: 2.5rem;
+        }
+
+        h2 {
+            font-size: 2rem;
+        }
+
+        h3 {
+            font-size: 1.5rem;
+        }
+
+        p {
+            margin-bottom: 1rem;
+        }
+
+        a {
+            text-decoration: none;
+            color: inherit;
+            transition: var(--transition);
+        }
+
+        /* Buttons */
+        .btn {
+            display: inline-block;
+            padding: 12px 30px;
+            background-color: var(--primary-red);
+            color: var(--white);
+            border: none;
+            border-radius: 4px;
+            font-weight: 600;
+            font-size: 1rem;
+            cursor: pointer;
+            transition: var(--transition);
+            text-align: center;
+        }
+
+        .btn:hover {
+            background-color: var(--dark-red);
+            transform: translateY(-2px);
+            box-shadow: var(--shadow);
+        }
+
+        /* Header & Navigation */
+        header {
+            background-color: var(--white);
+            box-shadow: var(--shadow);
+            position: fixed;
+            width: 100%;
+            top: 0;
+            z-index: 1000;
+        }
+
+        .navbar {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            padding: 1rem 0;
+        }
+
+        .logo {
+            font-size: 1.8rem;
+            font-weight: 700;
+            color: var(--primary-red);
+        }
+
+        .logo span {
+            color: var(--dark-gray);
+        }
+
+        .nav-links {
+            display: flex;
+            list-style: none;
+        }
+
+        .nav-links li {
+            margin-left: 2rem;
+        }
+
+        .nav-links a {
+            font-weight: 500;
+            position: relative;
+        }
+
+        .nav-links a:hover {
+            color: var(--primary-red);
+        }
+
+        .nav-links a::after {
+            content: '';
+            position: absolute;
+            width: 0;
+            height: 2px;
+            bottom: -5px;
+            left: 0;
+            background-color: var(--primary-red);
+            transition: var(--transition);
+        }
+
+        .nav-links a:hover::after {
+            width: 100%;
+        }
+
+        .hamburger {
+            display: none;
+            cursor: pointer;
+            background: none;
+            border: none;
+            font-size: 1.5rem;
+            color: var(--dark-gray);
+        }
+
+        /* Hero Section */
+        .hero {
+            height: 40vh;
+            background: linear-gradient(rgba(0, 0, 0, 0.6), rgba(0, 0, 0, 0.6)), url('data:image/svg+xml;utf8,<svg xmlns="http://www.w3.org/2000/svg" width="100" height="100" viewBox="0 0 100 100"><rect width="100" height="100" fill="%23e30613"/></svg>');
+            background-size: cover;
+            background-position: center;
+            display: flex;
+            align-items: center;
+            color: var(--white);
+            text-align: center;
+            margin-top: 70px;
+        }
+
+        .hero-content {
+            max-width: 800px;
+            margin: 0 auto;
+        }
+
+        .hero h1 {
+            font-size: 2.5rem;
+            margin-bottom: 1.5rem;
+            color: var(--white);
+            animation: fadeInUp 1s ease;
+        }
+
+        .hero p {
+            font-size: 1.2rem;
+            margin-bottom: 2rem;
+            animation: fadeInUp 1s ease 0.2s both;
+        }
+
+        /* Sections */
+        .section {
+            padding: 5rem 0;
+        }
+
+        .section-title {
+            text-align: center;
+            margin-bottom: 3rem;
+            position: relative;
+        }
+
+        .section-title::after {
+            content: '';
+            position: absolute;
+            width: 80px;
+            height: 3px;
+            background-color: var(--primary-red);
+            bottom: -10px;
+            left: 50%;
+            transform: translateX(-50%);
+        }
+
+        .bg-light {
+            background-color: var(--light-gray);
+        }
+
+        /* Contact Info */
+        .contact-info {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
+            gap: 2rem;
+            margin-bottom: 3rem;
+        }
+
+        .contact-item {
+            text-align: center;
+            padding: 1.5rem;
+            background-color: var(--white);
+            border-radius: 8px;
+            box-shadow: var(--shadow);
+            transition: var(--transition);
+        }
+
+        .contact-item:hover {
+            transform: translateY(-5px);
+        }
+
+        .contact-icon {
+            font-size: 2.5rem;
+            color: var(--primary-red);
+            margin-bottom: 1rem;
+        }
+
+        /* Form Styles */
+        .form-container {
+            max-width: 800px;
+            margin: 0 auto;
+            background-color: var(--white);
+            padding: 2rem;
+            border-radius: 8px;
+            box-shadow: var(--shadow);
+        }
+
+        .form-group {
+            margin-bottom: 1.5rem;
+        }
+
+        .form-group label {
+            display: block;
+            margin-bottom: 0.5rem;
+            font-weight: 500;
+        }
+
+        .form-control {
+            width: 100%;
+            padding: 12px;
+            border: 1px solid var(--medium-gray);
+            border-radius: 4px;
+            font-size: 1rem;
+            transition: var(--transition);
+        }
+
+        .form-control:focus {
+            border-color: var(--primary-red);
+            outline: none;
+            box-shadow: 0 0 0 2px rgba(227, 6, 19, 0.2);
+        }
+
+        textarea.form-control {
+            min-height: 150px;
+            resize: vertical;
+        }
+
+        .error {
+            color: var(--primary-red);
+            font-size: 0.875rem;
+            margin-top: 0.25rem;
+            display: none;
+        }
+
+        .success-message {
+            display: none;
+            background-color: #d4edda;
+            color: #155724;
+            padding: 12px;
+            border-radius: 4px;
+            margin-top: 1rem;
+            text-align: center;
+        }
+
+        /* Map Section */
+        .map-container {
+            height: 400px;
+            border-radius: 8px;
+            overflow: hidden;
+            box-shadow: var(--shadow);
+            margin-top: 2rem;
+        }
+
+        .map-placeholder {
+            height: 100%;
+            background-color: var(--light-gray);
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            color: var(--text-color);
+            font-size: 1.2rem;
+        }
+
+        /* FAQ Section */
+        .faq-item {
+            margin-bottom: 1.5rem;
+            border: 1px solid var(--medium-gray);
+            border-radius: 8px;
+            overflow: hidden;
+        }
+
+        .faq-question {
+            padding: 1rem 1.5rem;
+            background-color: var(--light-gray);
+            cursor: pointer;
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            font-weight: 600;
+        }
+
+        .faq-answer {
+            padding: 1rem 1.5rem;
+            display: none;
+        }
+
+        .faq-item.active .faq-answer {
+            display: block;
+        }
+
+        .faq-toggle {
+            font-size: 1.2rem;
+            transition: var(--transition);
+        }
+
+        .faq-item.active .faq-toggle {
+            transform: rotate(45deg);
+        }
+
+        /* Footer */
+        footer {
+            background-color: var(--dark-gray);
+            color: var(--white);
+            padding: 3rem 0 1rem;
+        }
+
+        .footer-content {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(200px, 1fr));
+            gap: 2rem;
+            margin-bottom: 2rem;
+        }
+
+        .footer-section h3 {
+            color: var(--white);
+            margin-bottom: 1.5rem;
+            position: relative;
+        }
+
+        .footer-section h3::after {
+            content: '';
+            position: absolute;
+            width: 40px;
+            height: 2px;
+            background-color: var(--primary-red);
+            bottom: -8px;
+            left: 0;
+        }
+
+        .footer-links {
+            list-style: none;
+        }
+
+        .footer-links li {
+            margin-bottom: 0.5rem;
+        }
+
+        .footer-links a:hover {
+            color: var(--primary-red);
+        }
+
+        .social-links {
+            display: flex;
+            gap: 1rem;
+        }
+
+        .social-links a {
+            display: inline-flex;
+            align-items: center;
+            justify-content: center;
+            width: 40px;
+            height: 40px;
+            background-color: rgba(255, 255, 255, 0.1);
+            border-radius: 50%;
+            transition: var(--transition);
+        }
+
+        .social-links a:hover {
+            background-color: var(--primary-red);
+            transform: translateY(-3px);
+        }
+
+        .footer-bottom {
+            text-align: center;
+            padding-top: 2rem;
+            border-top: 1px solid rgba(255, 255, 255, 0.1);
+        }
+
+        /* Animations */
+        @keyframes fadeInUp {
+            from {
+                opacity: 0;
+                transform: translateY(30px);
+            }
+            to {
+                opacity: 1;
+                transform: translateY(0);
+            }
+        }
+
+        /* Responsive Design */
+        @media (max-width: 768px) {
+            .hamburger {
+                display: block;
+            }
+            
+            .nav-links {
+                position: fixed;
+                top: 70px;
+                left: -100%;
+                width: 100%;
+                height: calc(100vh - 70px);
+                background-color: var(--white);
+                flex-direction: column;
+                align-items: center;
+                justify-content: flex-start;
+                padding-top: 2rem;
+                transition: var(--transition);
+                box-shadow: var(--shadow);
+            }
+            
+            .nav-links.active {
+                left: 0;
+            }
+            
+            .nav-links li {
+                margin: 1rem 0;
+            }
+            
+            .hero h1 {
+                font-size: 2rem;
+            }
+        }
+
+        @media (max-width: 576px) {
+            h1 {
+                font-size: 2rem;
+            }
+            
+            h2 {
+                font-size: 1.75rem;
+            }
+            
+            .section {
+                padding: 3rem 0;
+            }
+            
+            .form-container {
+                padding: 1.5rem;
+            }
+        }
+    </style>
+</head>
+<body>
+    <!-- Header -->
+    <header>
+        <div class="container">
+            <nav class="navbar">
+                <a href="index.html" class="logo">Life<span>Saver</span></a>
+                <ul class="nav-links">
+                    <li><a href="index.html">Home</a></li>
+                    <li><a href="about.html">About Us</a></li>
+                    <li><a href="donor.html">Become a Donor</a></li>
+                    <li><a href="donor-list.html">Donor List</a></li>
+                    <li><a href="contact.html">Contact</a></li>
+                </ul>
+                <button class="hamburger">☰</button>
+            </nav>
+        </div>
+    </header>
+
+    <!-- Page Header -->
+    <section class="hero">
+        <div class="container">
+            <div class="hero-content">
+                <h1>Contact Us</h1>
+                <p>We're here to help. Reach out to us with any questions or concerns.</p>
+            </div>
+        </div>
+    </section>
+
+    <!-- Contact Info -->
+    <section class="section">
+        <div class="container">
+            <h2 class="section-title">Get In Touch</h2>
+            <div class="contact-info">
+                <div class="contact-item">
+                    <div class="contact-icon">📍</div>
+                    <h3>Our Location</h3>
+                    <p>123 Health Street<br>Medical City, MC 12345</p>
+                </div>
+                <div class="contact-item">
+                    <div class="contact-icon">📞</div>
+                    <h3>Phone Number</h3>
+                    <p>(555) 123-4567<br>Mon-Fri, 9am-5pm</p>
+                </div>
+                <div class="contact-item">
+                    <div class="contact-icon">✉️</div>
+                    <h3>Email Address</h3>
+                    <p>info@lifesaver.org<br>support@lifesaver.org</p>
+                </div>
+                <div class="contact-item">
+                    <div class="contact-icon">🕒</div>
+                    <h3>Working Hours</h3>
+                    <p>Monday - Friday: 9am - 5pm<br>Saturday: 10am - 2pm</p>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Contact Form -->
+    <section class="section bg-light">
+        <div class="container">
+            <div class="form-container">
+                <h2 class="section-title">Send Us a Message</h2>
+                <form id="contactForm">
+                    <div class="form-group">
+                        <label for="contactName">Your Name *</label>
+                        <input type="text" id="contactName" class="form-control" placeholder="Enter your full name">
+                        <div class="error" id="contactNameError"></div>
+                    </div>
+                    
+                    <div class="form-group">
+                        <label for="contactEmail">Email Address *</label>
+                        <input type="email" id="contactEmail" class="form-control" placeholder="Enter your email address">
+                        <div class="error" id="contactEmailError"></div>
+                    </div>
+                    
+                    <div class="form-group">
+                        <label for="subject">Subject</label>
+                        <input type="text" id="subject" class="form-control" placeholder="Enter message subject">
+                    </div>
+                    
+                    <div class="form-group">
+                        <label for="message">Message *</label>
+                        <textarea id="message" class="form-control" placeholder="Enter your message"></textarea>
+                        <div class="error" id="messageError"></div>
+                    </div>
+                    
+                    <button type="submit" class="btn" style="width: 100%;">Send Message</button>
+                    <div class="success-message" id="successMessage">
+                        Thank you for your message! We'll get back to you soon.
+                    </div>
+                </form>
+            </div>
+        </div>
+    </section>
+
+    <!-- Map Section -->
+    <section class="section">
+        <div class="container">
+            <h2 class="section-title">Find Us</h2>
+            <div class="map-container">
+                <div class="map-placeholder">
+                    <!-- In a real implementation, you would embed a Google Maps iframe here -->
+                    <p>Interactive Map - 123 Health Street, Medical City</p>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- FAQ Section -->
+    <section class="section bg-light">
+        <div class="container">
+            <h2 class="section-title">Frequently Asked Questions</h2>
+            <div class="faq-container">
+                <div class="faq-item">
+                    <div class="faq-question">
+                        How can I become a blood donor?
+                        <span class="faq-toggle">+</span>
+                    </div>
+                    <div class="faq-answer">
+                        <p>You can become a blood donor by filling out our donor registration form on the "Become a Donor" page. Once registered, we'll contact you with information about donation centers and upcoming blood drives.</p>
+                    </div>
+                </div>
+                
+                <div class="faq-item">
+                    <div class="faq-question">
+                        What are the eligibility requirements for blood donation?
+                        <span class="faq-toggle">+</span>
+                    </div>
+                    <div class="faq-answer">
+                        <p>Generally, donors must be at least 17 years old, weigh at least 110 pounds, and be in good health. Specific eligibility criteria may vary, so we recommend contacting us for detailed information.</p>
+                    </div>
+                </div>
+                
+                <div class="faq-item">
+                    <div class="faq-question">
+                        How often can I donate blood?
+                        <span class="faq-toggle">+</span>
+                    </div>
+                    <div class="faq-answer">
+                        <p>You can donate whole blood every 56 days. Platelet donations can be made more frequently, up to 24 times a year. We'll help you determine the best donation schedule for you.</p>
+                    </div>
+                </div>
+                
+                <div class="faq-item">
+                    <div class="faq-question">
+                        Is my personal information secure?
+                        <span class="faq-toggle">+</span>
+                    </div>
+                    <div class="faq-answer">
+                        <p>Yes, we take your privacy seriously. All personal information is stored securely and only used for blood donation coordination purposes. We never share your information with third parties without your consent.</p>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Footer -->
+    <footer>
+        <div class="container">
+            <div class="footer-content">
+                <div class="footer-section">
+                    <h3>LifeSaver</h3>
+                    <p>Connecting blood donors with recipients to save lives and build healthier communities.</p>
+                </div>
+                <div class="footer-section">
+                    <h3>Quick Links</h3>
+                    <ul class="footer-links">
+                        <li><a href="index.html">Home</a></li>
+                        <li><a href="about.html">About Us</a></li>
+                        <li><a href="donor.html">Become a Donor</a></li>
+                        <li><a href="donor-list.html">Donor List</a></li>
+                        <li><a href="contact.html">Contact</a></li>
+                    </ul>
+                </div>
+                <div class="footer-section">
+                    <h3>Contact Info</h3>
+                    <p>Email: info@lifesaver.org</p>
+                    <p>Phone: (555) 123-4567</p>
+                    <p>Address: 123 Health St, Medical City</p>
+                </div>
+                <div class="footer-section">
+                    <h3>Follow Us</h3>
+                    <div class="social-links">
+                        <a href="#">FB</a>
+                        <a href="#">TW</a>
+                        <a href="#">IG</a>
+                        <a href="#">LI</a>
+                    </div>
+                </div>
+            </div>
+            <div class="footer-bottom">
+                <p>&copy; 2023 LifeSaver Blood Donation Management. All rights reserved.</p>
+            </div>
+        </div>
+    </footer>
+
+    <script>
+        // Navigation Toggle
+        document.addEventListener('DOMContentLoaded', function() {
+            // Hamburger menu toggle
+            const hamburger = document.querySelector('.hamburger');
+            const navLinks = document.querySelector('.nav-links');
+            
+            if (hamburger) {
+                hamburger.addEventListener('click', function() {
+                    navLinks.classList.toggle('active');
+                });
+            }
+            
+            // Close mobile menu when clicking on a link
+            const navItems = document.querySelectorAll('.nav-links a');
+            navItems.forEach(item => {
+                item.addEventListener('click', function() {
+                    if (navLinks.classList.contains('active')) {
+                        navLinks.classList.remove('active');
+                    }
+                });
+            });
+            
+            // FAQ Toggle
+            const faqItems = document.querySelectorAll('.faq-item');
+            faqItems.forEach(item => {
+                const question = item.querySelector('.faq-question');
+                question.addEventListener('click', () => {
+                    item.classList.toggle('active');
+                });
+            });
+            
+            // Contact Form Validation
+            const contactForm = document.getElementById('contactForm');
+            if (contactForm) {
+                contactForm.addEventListener('submit', function(e) {
+                    e.preventDefault();
+                    if (validateContactForm()) {
+                        submitContactForm();
+                    }
+                });
+            }
+        });
+
+        // Contact Form Validation
+        function validateContactForm() {
+            let isValid = true;
+            
+            // Reset error messages
+            const errorElements = document.querySelectorAll('.error');
+            errorElements.forEach(element => {
+                element.style.display = 'none';
+            });
+            
+            // Validate name
+            const name = document.getElementById('contactName');
+            if (!name.value.trim()) {
+                showError('contactNameError', 'Please enter your name');
+                isValid = false;
+            }
+            
+            // Validate email
+            const email = document.getElementById('contactEmail');
+            const emailRegex = /^[^\s@]+@[^\s@]+\.[^\s@]+$/;
+            if (!email.value.trim()) {
+                showError('contactEmailError', 'Please enter your email address');
+                isValid = false;
+            } else if (!emailRegex.test(email.value)) {
+                showError('contactEmailError', 'Please enter a valid email address');
+                isValid = false;
+            }
+            
+            // Validate message
+            const message = document.getElementById('message');
+            if (!message.value.trim()) {
+                showError('messageError', 'Please enter your message');
+                isValid = false;
+            } else if (message.value.trim().length < 10) {
+                showError('messageError', 'Message must be at least 10 characters long');
+                isValid = false;
+            }
+            
+            return isValid;
+        }
+
+        function showError(elementId, message) {
+            const errorElement = document.getElementById(elementId);
+            errorElement.textContent = message;
+            errorElement.style.display = 'block';
+        }
+
+        // Contact Form Submission
+        function submitContactForm() {
+            // In a real application, this would send data to a server
+            // For now, we'll just show a success message
+            
+            const successMessage = document.getElementById('successMessage');
+            successMessage.style.display = 'block';
+            
+            // Reset form
+            document.getElementById('contactForm').reset();
+            
+            // Hide success message after 5 seconds
+            setTimeout(() => {
+                successMessage.style.display = 'none';
+            }, 5000);
+        }
+    </script>
+</body>
+</html>

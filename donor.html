@@ -1,0 +1,136 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Become a Donor - LifeSaver</title>
+    <link rel="stylesheet" href="css/style.css">
+</head>
+<body>
+    <!-- Header -->
+    <header>
+        <div class="container">
+            <nav class="navbar">
+                <a href="index.html" class="logo">Life<span>Saver</span></a>
+                <ul class="nav-links">
+                    <li><a href="index.html">Home</a></li>
+                    <li><a href="about.html">About Us</a></li>
+                    <li><a href="donor.html">Become a Donor</a></li>
+                    <li><a href="donor-list.html">Donor List</a></li>
+                    <li><a href="contact.html">Contact</a></li>
+                </ul>
+                <button class="hamburger">☰</button>
+            </nav>
+        </div>
+    </header>
+
+    <!-- Page Header -->
+    <section class="hero" style="height: 40vh; margin-top: 70px;">
+        <div class="container">
+            <div class="hero-content">
+                <h1>Become a Blood Donor</h1>
+                <p>Join our life-saving community by registering as a blood donor.</p>
+            </div>
+        </div>
+    </section>
+
+    <!-- Donor Registration Form -->
+    <section class="section">
+        <div class="container">
+            <div class="form-container">
+                <h2 class="section-title">Donor Registration</h2>
+                <form id="donorForm">
+                    <div class="form-group">
+                        <label for="name">Full Name *</label>
+                        <input type="text" id="name" class="form-control" placeholder="Enter your full name">
+                        <div class="error" id="nameError"></div>
+                    </div>
+                    
+                    <div class="form-group">
+                        <label for="email">Email Address *</label>
+                        <input type="email" id="email" class="form-control" placeholder="Enter your email">
+                        <div class="error" id="emailError"></div>
+                    </div>
+                    
+                    <div class="form-group">
+                        <label for="phone">Phone Number *</label>
+                        <input type="tel" id="phone" class="form-control" placeholder="Enter your phone number">
+                        <div class="error" id="phoneError"></div>
+                    </div>
+                    
+                    <div class="form-group">
+                        <label for="bloodType">Blood Type *</label>
+                        <select id="bloodType" class="form-control">
+                            <option value="">Select your blood type</option>
+                            <option value="A+">A+</option>
+                            <option value="A-">A-</option>
+                            <option value="B+">B+</option>
+                            <option value="B-">B-</option>
+                            <option value="AB+">AB+</option>
+                            <option value="AB-">AB-</option>
+                            <option value="O+">O+</option>
+                            <option value="O-">O-</option>
+                        </select>
+                        <div class="error" id="bloodTypeError"></div>
+                    </div>
+                    
+                    <div class="form-group">
+                        <label for="location">Location *</label>
+                        <input type="text" id="location" class="form-control" placeholder="Enter your city and state">
+                        <div class="error" id="locationError"></div>
+                    </div>
+                    
+                    <div class="form-group">
+                        <label for="lastDonation">Last Donation Date (if any)</label>
+                        <input type="date" id="lastDonation" class="form-control">
+                    </div>
+                    
+                    <button type="submit" class="btn" style="width: 100%;">Register as Donor</button>
+                </form>
+            </div>
+        </div>
+    </section>
+
+    <!-- Footer -->
+    <footer>
+        <div class="container">
+            <div class="footer-content">
+                <div class="footer-section">
+                    <h3>LifeSaver</h3>
+                    <p>Connecting blood donors with recipients to save lives and build healthier communities.</p>
+                </div>
+                <div class="footer-section">
+                    <h3>Quick Links</h3>
+                    <ul class="footer-links">
+                        <li><a href="index.html">Home</a></li>
+                        <li><a href="about.html">About Us</a></li>
+                        <li><a href="donor.html">Become a Donor</a></li>
+                        <li><a href="donor-list.html">Donor List</a></li>
+                        <li><a href="contact.html">Contact</a></li>
+                    </ul>
+                </div>
+                <div class="footer-section">
+                    <h3>Contact Info</h3>
+                    <p>Email: info@lifesaver.org</p>
+                    <p>Phone: (555) 123-4567</p>
+                    <p>Address: 123 Health St, Medical City</p>
+                </div>
+                <div class="footer-section">
+                    <h3>Follow Us</h3>
+                    <div class="social-links">
+                        <a href="#">FB</a>
+                        <a href="#">TW</a>
+                        <a href="#">IG</a>
+                        <a href="#">LI</a>
+                    </div>
+                </div>
+            </div>
+            <div class="footer-bottom">
+                <p>&copy; 2023 LifeSaver Blood Donation Management. All rights reserved.</p>
+            </div>
+        </div>
+    </footer>
+
+    <script src="js/script.js"></script>
+</body>
+</html>
