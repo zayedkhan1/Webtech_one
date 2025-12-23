@@ -1,0 +1,855 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Blood Donation - Login</title>
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+    <style>
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+            font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+        }
+        
+        body {
+            background-color: #f8f9fa;
+            min-height: 100vh;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            padding: 20px;
+            transition: background-color 0.5s ease;
+        }
+        
+        .container {
+            width: 100%;
+            max-width: 1200px;
+            display: flex;
+            flex-direction: column;
+        }
+        
+        .header {
+            text-align: center;
+            margin-bottom: 30px;
+        }
+        
+        .header h1 {
+            color: #c00;
+            font-size: 2.8rem;
+            margin-bottom: 10px;
+        }
+        
+        .header p {
+            color: #666;
+            font-size: 1.2rem;
+        }
+        
+        .blood-drop {
+            color: #c00;
+            animation: pulse 2s infinite;
+        }
+        
+        @keyframes pulse {
+            0% { transform: scale(1); }
+            50% { transform: scale(1.1); }
+            100% { transform: scale(1); }
+        }
+        
+        .login-container {
+            display: flex;
+            box-shadow: 0 15px 35px rgba(0, 0, 0, 0.1);
+            border-radius: 15px;
+            overflow: hidden;
+            transition: transform 0.3s ease;
+        }
+        
+        .login-container:hover {
+            transform: translateY(-5px);
+        }
+        
+        .login-left {
+            background: linear-gradient(rgba(200, 0, 0, 0.9), rgba(150, 0, 0, 0.95)), url('https://images.unsplash.com/photo-1551601651-2a8555f1a136?ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D&auto=format&fit=crop&w=800&q=80');
+            background-size: cover;
+            background-position: center;
+            color: white;
+            padding: 50px;
+            flex: 1;
+            display: flex;
+            flex-direction: column;
+            justify-content: center;
+        }
+        
+        .login-left h2 {
+            font-size: 2.2rem;
+            margin-bottom: 20px;
+        }
+        
+        .login-left p {
+            font-size: 1.1rem;
+            line-height: 1.6;
+            margin-bottom: 30px;
+        }
+        
+        .benefits-list {
+            list-style: none;
+        }
+        
+        .benefits-list li {
+            margin-bottom: 15px;
+            display: flex;
+            align-items: center;
+        }
+        
+        .benefits-list i {
+            color: #ffcccb;
+            margin-right: 10px;
+            font-size: 1.2rem;
+        }
+        
+        .login-right {
+            background-color: white;
+            padding: 50px;
+            flex: 1;
+            display: flex;
+            flex-direction: column;
+            justify-content: center;
+        }
+        
+        .login-form h2 {
+            color: #c00;
+            font-size: 2rem;
+            margin-bottom: 10px;
+        }
+        
+        .login-form p {
+            color: #666;
+            margin-bottom: 30px;
+        }
+        
+        .form-group {
+            margin-bottom: 25px;
+            position: relative;
+        }
+        
+        .form-group label {
+            display: block;
+            margin-bottom: 8px;
+            color: #333;
+            font-weight: 600;
+        }
+        
+        .input-with-icon {
+            position: relative;
+        }
+        
+        .input-with-icon i {
+            position: absolute;
+            left: 15px;
+            top: 50%;
+            transform: translateY(-50%);
+            color: #c00;
+        }
+        
+        .input-with-icon input {
+            width: 100%;
+            padding: 15px 15px 15px 45px;
+            border: 2px solid #ddd;
+            border-radius: 8px;
+            font-size: 1rem;
+            transition: all 0.3s;
+        }
+        
+        .input-with-icon input:focus {
+            border-color: #c00;
+            outline: none;
+            box-shadow: 0 0 0 3px rgba(204, 0, 0, 0.1);
+        }
+        
+        .password-toggle {
+            position: absolute;
+            right: 15px;
+            top: 50%;
+            transform: translateY(-50%);
+            background: none;
+            border: none;
+            color: #777;
+            cursor: pointer;
+        }
+        
+        .options {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            margin-bottom: 25px;
+        }
+        
+        .remember-me {
+            display: flex;
+            align-items: center;
+        }
+        
+        .remember-me input {
+            margin-right: 8px;
+        }
+        
+        .forgot-password {
+            color: #c00;
+            text-decoration: none;
+            font-weight: 600;
+        }
+        
+        .forgot-password:hover {
+            text-decoration: underline;
+        }
+        
+        .login-btn {
+            background-color: #c00;
+            color: white;
+            border: none;
+            padding: 16px;
+            width: 100%;
+            border-radius: 8px;
+            font-size: 1.2rem;
+            font-weight: 600;
+            cursor: pointer;
+            transition: background-color 0.3s;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+        }
+        
+        .login-btn i {
+            margin-right: 10px;
+        }
+        
+        .login-btn:hover {
+            background-color: #a00;
+        }
+        
+        .register-link {
+            text-align: center;
+            margin-top: 25px;
+            color: #666;
+        }
+        
+        .register-link a {
+            color: #c00;
+            text-decoration: none;
+            font-weight: 600;
+        }
+        
+        .register-link a:hover {
+            text-decoration: underline;
+        }
+        
+        .error-message {
+            color: #c00;
+            font-size: 0.9rem;
+            margin-top: 5px;
+            display: none;
+        }
+        
+        .success-message {
+            background-color: #d4edda;
+            color: #155724;
+            padding: 15px;
+            border-radius: 8px;
+            margin-bottom: 20px;
+            display: none;
+        }
+        
+        /* Home Page Styles */
+        .home-page {
+            display: none;
+            width: 100%;
+            animation: fadeIn 0.8s ease;
+        }
+        
+        @keyframes fadeIn {
+            from { opacity: 0; }
+            to { opacity: 1; }
+        }
+        
+        .navbar {
+            background-color: white;
+            box-shadow: 0 4px 12px rgba(0, 0, 0, 0.1);
+            padding: 20px 40px;
+            border-radius: 10px;
+            margin-bottom: 30px;
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+        }
+        
+        .logo {
+            display: flex;
+            align-items: center;
+        }
+        
+        .logo i {
+            color: #c00;
+            font-size: 2rem;
+            margin-right: 10px;
+        }
+        
+        .logo h2 {
+            color: #c00;
+            font-size: 1.8rem;
+        }
+        
+        .nav-links {
+            display: flex;
+            list-style: none;
+        }
+        
+        .nav-links li {
+            margin-left: 25px;
+        }
+        
+        .nav-links a {
+            color: #333;
+            text-decoration: none;
+            font-weight: 600;
+            transition: color 0.3s;
+        }
+        
+        .nav-links a:hover {
+            color: #c00;
+        }
+        
+        .logout-btn {
+            background-color: #c00;
+            color: white;
+            border: none;
+            padding: 10px 20px;
+            border-radius: 5px;
+            cursor: pointer;
+            font-weight: 600;
+            transition: background-color 0.3s;
+        }
+        
+        .logout-btn:hover {
+            background-color: #a00;
+        }
+        
+        .home-content {
+            background-color: white;
+            border-radius: 10px;
+            padding: 40px;
+            box-shadow: 0 5px 20px rgba(0, 0, 0, 0.08);
+        }
+        
+        .welcome-section {
+            text-align: center;
+            margin-bottom: 40px;
+        }
+        
+        .welcome-section h1 {
+            color: #c00;
+            font-size: 2.5rem;
+            margin-bottom: 15px;
+        }
+        
+        .welcome-section p {
+            color: #666;
+            font-size: 1.1rem;
+            max-width: 700px;
+            margin: 0 auto 20px;
+        }
+        
+        .user-info {
+            background-color: #f9f9f9;
+            padding: 20px;
+            border-radius: 8px;
+            display: inline-block;
+            margin-bottom: 20px;
+        }
+        
+        .dashboard {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
+            gap: 25px;
+            margin-top: 30px;
+        }
+        
+        .dashboard-card {
+            background-color: #f9f9f9;
+            padding: 25px;
+            border-radius: 10px;
+            text-align: center;
+            transition: transform 0.3s ease;
+        }
+        
+        .dashboard-card:hover {
+            transform: translateY(-5px);
+        }
+        
+        .dashboard-card i {
+            font-size: 2.5rem;
+            color: #c00;
+            margin-bottom: 15px;
+        }
+        
+        .dashboard-card h3 {
+            color: #333;
+            margin-bottom: 10px;
+        }
+        
+        .dashboard-card p {
+            color: #666;
+            margin-bottom: 15px;
+        }
+        
+        .card-btn {
+            background-color: #c00;
+            color: white;
+            border: none;
+            padding: 10px 20px;
+            border-radius: 5px;
+            cursor: pointer;
+            font-weight: 600;
+            transition: background-color 0.3s;
+        }
+        
+        .card-btn:hover {
+            background-color: #a00;
+        }
+        
+        .upcoming-drives {
+            margin-top: 40px;
+            background-color: #fff5f5;
+            padding: 25px;
+            border-radius: 10px;
+        }
+        
+        .upcoming-drives h2 {
+            color: #c00;
+            margin-bottom: 20px;
+            font-size: 1.8rem;
+        }
+        
+        .drive-list {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+            gap: 20px;
+        }
+        
+        .drive-item {
+            background-color: white;
+            padding: 20px;
+            border-radius: 8px;
+            box-shadow: 0 3px 10px rgba(0, 0, 0, 0.05);
+        }
+        
+        .drive-item h4 {
+            color: #c00;
+            margin-bottom: 10px;
+        }
+        
+        @media (max-width: 768px) {
+            .login-container {
+                flex-direction: column;
+            }
+            
+            .login-left, .login-right {
+                padding: 30px;
+            }
+            
+            .navbar {
+                flex-direction: column;
+                padding: 20px;
+            }
+            
+            .nav-links {
+                margin-top: 20px;
+                flex-wrap: wrap;
+                justify-content: center;
+            }
+            
+            .nav-links li {
+                margin: 5px 10px;
+            }
+        }
+    </style>
+</head>
+<body>
+    <!-- Login Page -->
+    <div class="container" id="loginPage">
+        <div class="header">
+            <h1><i class="fas fa-tint blood-drop"></i> Blood Donation Network</h1>
+            <p>Login to continue your life-saving journey</p>
+        </div>
+        
+        <div class="login-container">
+            <div class="login-left">
+                <h2>Welcome Back, Hero!</h2>
+                <p>Thank you for being part of our life-saving community. Your donations have helped save countless lives.</p>
+                
+                <ul class="benefits-list">
+                    <li><i class="fas fa-check-circle"></i> Track your donation history</li>
+                    <li><i class="fas fa-check-circle"></i> Schedule your next donation</li>
+                    <li><i class="fas fa-check-circle"></i> Receive notifications about urgent needs</li>
+                    <li><i class="fas fa-check-circle"></i> Earn rewards and recognition</li>
+                    <li><i class="fas fa-check-circle"></i> Connect with other donors</li>
+                </ul>
+            </div>
+            
+            <div class="login-right">
+                <div class="login-form">
+                    <h2>Login to Your Account</h2>
+                    <p>Enter your credentials to access your donor dashboard</p>
+                    
+                    <div class="success-message" id="loginSuccessMessage">
+                        <i class="fas fa-check-circle"></i> Login successful! Redirecting to dashboard...
+                    </div>
+                    
+                    <form id="loginForm">
+                        <div class="form-group">
+                            <label for="loginEmail">Email Address</label>
+                            <div class="input-with-icon">
+                                <i class="fas fa-envelope"></i>
+                                <input type="email" id="loginEmail" placeholder="Enter your registered email">
+                            </div>
+                            <div class="error-message" id="emailError">Please enter a valid email address</div>
+                        </div>
+                        
+                        <div class="form-group">
+                            <label for="loginPassword">Password</label>
+                            <div class="input-with-icon">
+                                <i class="fas fa-lock"></i>
+                                <input type="password" id="loginPassword" placeholder="Enter your password">
+                                <button type="button" class="password-toggle" id="togglePassword">
+                                    <i class="fas fa-eye"></i>
+                                </button>
+                            </div>
+                            <div class="error-message" id="passwordError">Please enter your password</div>
+                        </div>
+                        
+                        <div class="options">
+                            <div class="remember-me">
+                                <input type="checkbox" id="rememberMe">
+                                <label for="rememberMe">Remember me</label>
+                            </div>
+                            <a href="#" class="forgot-password">Forgot Password?</a>
+                        </div>
+                        
+                        <button type="submit" class="login-btn">
+                            <i class="fas fa-sign-in-alt"></i> Login to Dashboard
+                        </button>
+                        
+                        <div class="register-link">
+                            Don't have an account? <a href="#" id="registerLink">Register as a donor</a>
+                        </div>
+                    </form>
+                </div>
+            </div>
+        </div>
+    </div>
+    
+    <!-- Home Page (Initially Hidden) -->
+    <div class="home-page" id="homePage">
+        <nav class="navbar">
+            <div class="logo">
+                <i class="fas fa-tint blood-drop"></i>
+                <h2>Blood Donation Network</h2>
+            </div>
+            
+            <ul class="nav-links">
+                <li><a href="#"><i class="fas fa-home"></i> Dashboard</a></li>
+                <li><a href="#"><i class="fas fa-history"></i> Donation History</a></li>
+                <li><a href="#"><i class="fas fa-calendar-alt"></i> Schedule Donation</a></li>
+                <li><a href="#"><i class="fas fa-award"></i> Rewards</a></li>
+                <li><a href="#"><i class="fas fa-user"></i> Profile</a></li>
+            </ul>
+            
+            <button class="logout-btn" id="logoutBtn">
+                <i class="fas fa-sign-out-alt"></i> Logout
+            </button>
+        </nav>
+        
+        <div class="home-content">
+            <div class="welcome-section">
+                <h1>Welcome Back, <span id="userName">Donor</span>!</h1>
+                <p>Thank you for being a vital part of our life-saving mission. Your generosity helps ensure that patients in need receive the blood they require.</p>
+                
+                <div class="user-info">
+                    <p><strong>Last Donation:</strong> <span id="lastDonation">3 months ago</span></p>
+                    <p><strong>Total Donations:</strong> <span id="totalDonations">7</span></p>
+                    <p><strong>Lives Saved:</strong> <span id="livesSaved">21</span></p>
+                </div>
+            </div>
+            
+            <div class="dashboard">
+                <div class="dashboard-card">
+                    <i class="fas fa-tint"></i>
+                    <h3>Donate Now</h3>
+                    <p>Schedule your next blood donation at a center near you</p>
+                    <button class="card-btn">Schedule Donation</button>
+                </div>
+                
+                <div class="dashboard-card">
+                    <i class="fas fa-history"></i>
+                    <h3>Donation History</h3>
+                    <p>View your complete donation history and milestones</p>
+                    <button class="card-btn">View History</button>
+                </div>
+                
+                <div class="dashboard-card">
+                    <i class="fas fa-heartbeat"></i>
+                    <h3>Health Tips</h3>
+                    <p>Important health information for blood donors</p>
+                    <button class="card-btn">Read Tips</button>
+                </div>
+                
+                <div class="dashboard-card">
+                    <i class="fas fa-award"></i>
+                    <h3>Your Rewards</h3>
+                    <p>Check your donor rewards and recognition</p>
+                    <button class="card-btn">View Rewards</button>
+                </div>
+            </div>
+            
+            <div class="upcoming-drives">
+                <h2><i class="fas fa-calendar-alt"></i> Upcoming Blood Donation Drives</h2>
+                <div class="drive-list">
+                    <div class="drive-item">
+                        <h4>Community Center Drive</h4>
+                        <p><strong>Date:</strong> June 15, 2023</p>
+                        <p><strong>Location:</strong> Downtown Community Center</p>
+                        <p><strong>Time:</strong> 9:00 AM - 4:00 PM</p>
+                        <button class="card-btn">Register</button>
+                    </div>
+                    
+                    <div class="drive-item">
+                        <h4>University Campus Drive</h4>
+                        <p><strong>Date:</strong> June 22, 2023</p>
+                        <p><strong>Location:</strong> State University Campus</p>
+                        <p><strong>Time:</strong> 10:00 AM - 5:00 PM</p>
+                        <button class="card-btn">Register</button>
+                    </div>
+                    
+                    <div class="drive-item">
+                        <h4>Corporate Drive - TechCorp</h4>
+                        <p><strong>Date:</strong> June 28, 2023</p>
+                        <p><strong>Location:</strong> TechCorp Headquarters</p>
+                        <p><strong>Time:</strong> 8:00 AM - 3:00 PM</p>
+                        <button class="card-btn">Register</button>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+    
+    <!-- Forgot Password Modal -->
+    <div id="forgotPasswordModal" style="display:none; position:fixed; top:0; left:0; width:100%; height:100%; background-color:rgba(0,0,0,0.7); z-index:1000; justify-content:center; align-items:center;">
+        <div style="background-color:white; padding:30px; border-radius:10px; max-width:500px; width:90%;">
+            <h2 style="color:#c00; margin-bottom:20px;"><i class="fas fa-key"></i> Reset Password</h2>
+            <p style="margin-bottom:20px;">Enter your email address and we'll send you instructions to reset your password.</p>
+            
+            <div class="form-group">
+                <label for="resetEmail">Email Address</label>
+                <div class="input-with-icon">
+                    <i class="fas fa-envelope"></i>
+                    <input type="email" id="resetEmail" placeholder="Enter your registered email" style="width:100%; padding:12px 12px 12px 40px;">
+                </div>
+            </div>
+            
+            <div style="display:flex; justify-content:space-between; margin-top:25px;">
+                <button id="cancelReset" style="background-color:#ddd; color:#333; border:none; padding:10px 20px; border-radius:5px; cursor:pointer;">Cancel</button>
+                <button id="sendReset" style="background-color:#c00; color:white; border:none; padding:10px 20px; border-radius:5px; cursor:pointer;">Send Reset Link</button>
+            </div>
+        </div>
+    </div>
+    
+    <script>
+        // DOM Elements
+        const loginForm = document.getElementById('loginForm');
+        const loginPage = document.getElementById('loginPage');
+        const homePage = document.getElementById('homePage');
+        const togglePassword = document.getElementById('togglePassword');
+        const passwordInput = document.getElementById('loginPassword');
+        const forgotPasswordLink = document.querySelector('.forgot-password');
+        const forgotPasswordModal = document.getElementById('forgotPasswordModal');
+        const cancelResetBtn = document.getElementById('cancelReset');
+        const sendResetBtn = document.getElementById('sendReset');
+        const logoutBtn = document.getElementById('logoutBtn');
+        const loginSuccessMessage = document.getElementById('loginSuccessMessage');
+        const registerLink = document.getElementById('registerLink');
+        
+        // Demo credentials for testing
+        const demoCredentials = {
+            email: "donor@example.com",
+            password: "BloodDonor123"
+        };
+        
+        // Toggle password visibility
+        togglePassword.addEventListener('click', function() {
+            const type = passwordInput.getAttribute('type') === 'password' ? 'text' : 'password';
+            passwordInput.setAttribute('type', type);
+            this.innerHTML = type === 'password' ? '<i class="fas fa-eye"></i>' : '<i class="fas fa-eye-slash"></i>';
+        });
+        
+        // Show forgot password modal
+        forgotPasswordLink.addEventListener('click', function(e) {
+            e.preventDefault();
+            forgotPasswordModal.style.display = 'flex';
+        });
+        
+        // Close forgot password modal
+        cancelResetBtn.addEventListener('click', function() {
+            forgotPasswordModal.style.display = 'none';
+        });
+        
+        // Send reset password link
+        sendResetBtn.addEventListener('click', function() {
+            const resetEmail = document.getElementById('resetEmail').value;
+            if (resetEmail) {
+                alert(`Password reset link has been sent to ${resetEmail}. Check your email.`);
+                forgotPasswordModal.style.display = 'none';
+            } else {
+                alert("Please enter your email address.");
+            }
+        });
+        
+        // Close modal when clicking outside
+        forgotPasswordModal.addEventListener('click', function(e) {
+            if (e.target === forgotPasswordModal) {
+                forgotPasswordModal.style.display = 'none';
+            }
+        });
+        
+        // Register link handler
+        registerLink.addEventListener('click', function(e) {
+            e.preventDefault();
+            alert("Redirecting to registration page... In a real application, this would navigate to the registration form.");
+        });
+        
+        // Login form validation
+        function validateLoginForm() {
+            let isValid = true;
+            
+            // Reset error messages
+            document.querySelectorAll('.error-message').forEach(error => {
+                error.style.display = 'none';
+            });
+            
+            // Email validation
+            const email = document.getElementById('loginEmail').value.trim();
+            const emailRegex = /^[^\s@]+@[^\s@]+\.[^\s@]+$/;
+            if (!emailRegex.test(email)) {
+                document.getElementById('emailError').style.display = 'block';
+                isValid = false;
+            }
+            
+            // Password validation
+            const password = document.getElementById('loginPassword').value;
+            if (!password) {
+                document.getElementById('passwordError').style.display = 'block';
+                isValid = false;
+            }
+            
+            return isValid;
+        }
+        
+        // Simulate login process
+        function simulateLogin(email) {
+            // Extract name from email for demo purposes
+            const name = email.split('@')[0];
+            const formattedName = name.charAt(0).toUpperCase() + name.slice(1);
+            
+            // Update user info on home page
+            document.getElementById('userName').textContent = formattedName;
+            
+            // Simulate some random data for the dashboard
+            document.getElementById('lastDonation').textContent = "3 months ago";
+            document.getElementById('totalDonations').textContent = Math.floor(Math.random() * 10) + 1;
+            document.getElementById('livesSaved').textContent = parseInt(document.getElementById('totalDonations').textContent) * 3;
+            
+            // Show success message
+            loginSuccessMessage.style.display = 'block';
+            
+            // Simulate API call delay
+            setTimeout(() => {
+                // Hide login page and show home page
+                loginPage.style.display = 'none';
+                homePage.style.display = 'block';
+                
+                // Change background color for home page
+                document.body.style.backgroundColor = '#f0f2f5';
+                
+                // Reset form
+                loginForm.reset();
+                loginSuccessMessage.style.display = 'none';
+            }, 1500);
+        }
+        
+        // Login form submission handler
+        loginForm.addEventListener('submit', function(e) {
+            e.preventDefault();
+            
+            if (validateLoginForm()) {
+                const email = document.getElementById('loginEmail').value.trim();
+                const password = document.getElementById('loginPassword').value;
+                
+                // Check against demo credentials
+                if (email === demoCredentials.email && password === demoCredentials.password) {
+                    simulateLogin(email);
+                } else {
+                    // For demo purposes, accept any valid email/password combination
+                    // In a real app, this would check against a database
+                    if (email && password.length >= 8) {
+                        simulateLogin(email);
+                    } else {
+                        alert("Invalid credentials. For demo, use email: donor@example.com, password: BloodDonor123");
+                    }
+                }
+            }
+        });
+        
+        // Logout handler
+        logoutBtn.addEventListener('click', function() {
+            // Show login page and hide home page
+            loginPage.style.display = 'flex';
+            homePage.style.display = 'none';
+            
+            // Reset background color
+            document.body.style.backgroundColor = '#f8f9fa';
+            
+            // Show logout message
+            alert("You have been successfully logged out. Thank you for visiting!");
+        });
+        
+        // Demo login button for easier testing
+        document.addEventListener('DOMContentLoaded', function() {
+            // Add a demo login button for testing
+            const demoLoginBtn = document.createElement('button');
+            demoLoginBtn.innerHTML = '<i class="fas fa-vial"></i> Quick Demo Login';
+            demoLoginBtn.style.cssText = `
+                position: fixed;
+                bottom: 20px;
+                right: 20px;
+                background-color: #c00;
+                color: white;
+                border: none;
+                padding: 12px 20px;
+                border-radius: 5px;
+                cursor: pointer;
+                font-weight: 600;
+                z-index: 100;
+                box-shadow: 0 4px 10px rgba(0,0,0,0.2);
+            `;
+            
+            demoLoginBtn.addEventListener('click', function() {
+                document.getElementById('loginEmail').value = demoCredentials.email;
+                document.getElementById('loginPassword').value = demoCredentials.password;
+                document.getElementById('rememberMe').checked = true;
+                simulateLogin(demoCredentials.email);
+            });
+            
+            document.body.appendChild(demoLoginBtn);
+        });
+    </script>
+</body>
+</html>
